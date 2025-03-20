@@ -208,3 +208,17 @@ footer {
     text-align: right;
     margin-top: 10px;
 }
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.row {
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo según necesites */
+    display: flex;
+    justify-content: center;
+}
