@@ -1,23 +1,27 @@
 const productos = [
     {
+        id: 1,
         imagen: "img/producto1.webp",
         nombre: "Producto 1",
         descripcion: "Descripción",
         precio: 10.00
     },
     {
+        id: 2,
         imagen: "img/producto2.jpg",
         nombre: "Producto 2",
         descripcion: "Descripción",
         precio: 15.00
     },
     {
+        id: 3,
         imagen: "img/producto3.jpg",
         nombre: "Producto 3",
         descripcion: "Descripción",
         precio: 20.00
     },
     {
+        id: 4,
         imagen: "img/producto4.jpg",
         nombre: "Producto 4",
         descripcion: "Descripción",
@@ -25,20 +29,23 @@ const productos = [
     }
 ];
 
-function productoHTML(producto) {
-    return `
-        <article class="product-item">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
-            <p class="price">$${producto.precio.toFixed(2)}</p>
-            <button>Añadir al carrito</button>
-        </article>
-    `;
+function getProductById(id) {
+    return productos.find(producto => producto.id === id);
 }
 
-const productGrid = document.querySelector(".product-grid");
+function loadProduct() {
+    const url = new URLSearchParams(window.location.search);
+    const productoId = parseInt(url.get('id'));
+    const producto = getProductById(productoId);
 
-productos.forEach(producto => {
-    productGrid.innerHTML += productoHTML(producto);
-});
+    if (producto) {
+        document.getElementById('producto-imagen').src = producto.imagen;
+        document.getElementById('producto-nombre').textContent = producto.nombre;
+        document.getElementById('producto-precio').textContent = `$${producto.precio.toFixed(2)}`;
+        document.getElementById('producto-descripcion').textContent = producto.descripcion;
+    } else {
+        document.querySelector('.producto-detalle').innerHTML = '<p>Producto no encontrado.</p>';
+    }
+}
+
+window.onload = loadProduct;
