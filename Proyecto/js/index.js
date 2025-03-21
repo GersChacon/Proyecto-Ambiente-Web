@@ -32,30 +32,30 @@ const productos = [
     {
         id: 1,
         imagen: "img/producto1.webp",
-        nombre: "Producto 1",
-        descripcion: "Descripción",
-        precio: 10.00
+        nombre: "AB-COLIC",
+        descripcion: "Probioticos para Colicos Infantiles",
+        precio: 5000
     },
     {
         id: 2,
         imagen: "img/producto2.jpg",
-        nombre: "Producto 2",
-        descripcion: "Descripción",
-        precio: 15.00
+        nombre: "Electrolit",
+        descripcion: "Suero Rehidratante",
+        precio: 7500
     },
     {
         id: 3,
         imagen: "img/producto3.jpg",
-        nombre: "Producto 3",
-        descripcion: "Descripción",
-        precio: 20.00
+        nombre: "Amoxilina",
+        descripcion: "Antibiotico",
+        precio: 10000
     },
     {
         id: 4,
         imagen: "img/producto4.jpg",
-        nombre: "Producto 4",
-        descripcion: "Descripción",
-        precio: 25.00
+        nombre: "Accu-Check",
+        descripcion: "Lancetas",
+        precio: 12500
     }
 ];
 
@@ -65,7 +65,7 @@ function productoHTML(producto) {
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3><a href="producto.html?id=${producto.id}">${producto.nombre}</a></h3>            
             <p>${producto.descripcion}</p>
-            <p class="precio">$${producto.precio.toFixed(2)}</p>
+            <p class="precio">₡${producto.precio.toFixed(2)}</p>
             <button>Añadir al carrito</button>
         </article>
     `;
