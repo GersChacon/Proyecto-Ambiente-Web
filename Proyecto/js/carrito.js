@@ -1,8 +1,7 @@
-//Simulación de productos en el carrito (esto podría venir de un almacenamiento local o API)
-let carrito = [
-   { id: 1, nombre: "AB-COLIC", precio: 5000, cantidad: 1 },
-  { id: 2, nombre: "Electrolit", precio: 7500, cantidad: 2 },
-];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [
+    { id: 1, nombre: "AB-COLIC", precio: 5000, cantidad: 1 },
+    { id: 2, nombre: "Electrolit", precio: 7500, cantidad: 2 },
+ ];
 
 // Función para mostrar los productos en el carrito
 function mostrarCarrito() {
@@ -33,6 +32,7 @@ function mostrarCarrito() {
 // Función para eliminar un producto del carrito
 function eliminarProducto(id) {
     carrito = carrito.filter(producto => producto.id !== id);
+    guardarCarrito();
     mostrarCarrito();
 }
 
@@ -42,10 +42,16 @@ document.getElementById("checkout").addEventListener("click", function() {
         alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
     } else {
         alert("Proceso de compra finalizado. ¡Gracias por tu compra!");
-        carrito = []; // Limpiar el carrito
-        mostrarCarrito(); // Actualizar la vista
+        carrito = [];
+        guardarCarrito(); // Limpiamos el carrito del localStorage
+        mostrarCarrito();
     }
 });
 
+
 // Mostrar el carrito al cargar la página
 document.addEventListener("DOMContentLoaded", mostrarCarrito);
+
+function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
