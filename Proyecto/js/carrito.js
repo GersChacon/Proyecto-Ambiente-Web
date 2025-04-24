@@ -41,7 +41,10 @@ function eliminarProducto(id) {
 
 function actualizarCantidad(id, nuevaCantidad) {
     const cantidad = parseInt(nuevaCantidad);
-    if (cantidad <= 0 || isNaN(cantidad)) return;
+    if (isNaN(cantidad) || cantidad < 1) {
+        alert("Por favor, introduce una cantidad válida.");
+        return;
+    }
 
     const producto = carrito.find(p => p.id === id);
     if (producto) {
