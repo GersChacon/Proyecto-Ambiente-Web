@@ -1,6 +1,6 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [
+let carrito = [
     { id: 1, nombre: "AB-COLIC", precio: 5000, cantidad: 1 },
-    { id: 2, nombre: "Electrolit", precio: 7500, cantidad: 2 },
+   { id: 2, nombre: "Electrolit", precio: 7500, cantidad: 2 },
  ];
 
 // Función para mostrar los productos en el carrito
