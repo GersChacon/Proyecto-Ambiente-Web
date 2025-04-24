@@ -209,20 +209,22 @@ footer {
     margin-top: 10px;
 }
 
-<<<<<<< HEAD
 .container1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    height: 100vh;
+    /* Ocupa toda la altura de la pantalla */
 }
 
 .row {
     width: 100%;
-    max-width: 1200px; /* Ajusta el ancho máximo según necesites */
+    max-width: 1200px;
+    /* Ajusta el ancho máximo según necesites */
     display: flex;
     justify-content: center;
-=======
+}
+
 .producto-detalle {
     padding: 20px 10%;
     background-color: #f1f1f1;
@@ -428,5 +430,4 @@ footer {
 
 .error-message a:hover {
     text-decoration: underline;
->>>>>>> 0c9271e5e8cfbc79504a7f5bee597003222580fd
 }
