@@ -15,14 +15,17 @@ function mostrarCarrito() {
         total += totalProducto;
 
         carritoItems.innerHTML += `
-            <tr>
-                <td>${producto.nombre}</td>
-                <td>₡${producto.precio.toFixed(2)}</td>
-                <td>${producto.cantidad}</td>
-                <td>₡${totalProducto.toFixed(2)}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
-            </tr>
-        `;
+        <tr>
+            <td>${producto.nombre}</td>
+            <td>₡${producto.precio.toFixed(2)}</td>
+            <td>
+                <input type="number" min="1" value="${producto.cantidad}" onchange="actualizarCantidad(${producto.id}, this.value)">
+            </td>
+            <td>₡${totalProducto.toFixed(2)}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
+        </tr>
+    `;
+    
     });
 
     document.getElementById("total-price").textContent = total.toFixed(2);
@@ -34,6 +37,18 @@ function eliminarProducto(id) {
     carrito = carrito.filter(producto => producto.id !== id);
     guardarCarrito();
     mostrarCarrito();
+}
+
+function actualizarCantidad(id, nuevaCantidad) {
+    const cantidad = parseInt(nuevaCantidad);
+    if (cantidad <= 0 || isNaN(cantidad)) return;
+
+    const producto = carrito.find(p => p.id === id);
+    if (producto) {
+        producto.cantidad = cantidad;
+        guardarCarrito(); // Guardamos la nueva cantidad
+        mostrarCarrito(); // Actualizamos la vista
+    }
 }
 
 // Función para finalizar la compra
